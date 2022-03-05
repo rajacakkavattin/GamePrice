@@ -1,0 +1,92 @@
+.inputbox {
+  padding: 30px;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+}
+.inputbox input {
+  margin-left: 30px;
+  width: 240px;
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid #333;
+}
+.inputbox .btns {
+  border: 1px solid #ccc;
+  display: block;
+  width: 120px;
+  font-size: 20px;
+  line-height: 40px;
+  height: 40px;
+  background-color: #f4f4f4;
+  color: #333;
+  border-radius: 10px;
+  margin: 30px auto;
+}
+.box {
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 30px;
+  max-width: 900px;
+  margin: auto;
+  display: block;
+}
+.box ul {
+  border: 1px solid #ccc;
+}
+.box .line1 {
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+.box .line1 li {
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+.box .line1 li:not(:last-child) {
+  border-right: 1px solid #ccc;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+}
+.box .tit {
+  color: #333;
+  font-size: 14px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  background-color: #f4f4f4;
+}
+.box p {
+  text-align: left;
+  color: #333;
+}
+.box .hotel_url1 {
+  border-bottom: 1px solid #ccc;
+  background-color: #f4f4f4;
+}
+.box .form ul:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+.box .tables .title {
+  background-color: #f4f4f4;
+}
+.box .tables .title li {
+  font-weight: bold;
+}
+.box .tables li:not(:last-child) {
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.box .tables li:nth-child(1) {
+  width: 40%;
+}
+.box .tables li:nth-child(2) {
+  width: 20%;
+}
+.box .tables li:nth-child(3) {
+  width: 30%;
+}
+.box .tables li:nth-child(4) {
+  width: 10%;
+}

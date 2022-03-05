@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/index.css') }}">
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class="inputbox">
+        Input the Game You Want to Search:<input type="text" class="game" value="God of War"><br>
+        <a href="javascript:;" class="btns">submit</a>
+    </div>
+    <div class="box">
+        <p class="tit">On Steam</p>
+        <div class="tables">
+            <ul class="title fn-clear">
+                <li class="fl">Game Name</li>
+                <li class="fl">Price</li>
+                <li class="fl">On Sale</li>
+            </ul>
+            <div class="sform">
+            </div>
+        </div>
+        <p class="tit">On Epic</p>
+        <div class="tables">
+            <ul class="title fn-clear">
+                <li class="fl">Game Name</li>
+                <li class="fl">Price</li>
+                <li class="fl">On Sale</li>
+            </ul>
+            <div class="eform">
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.btns').click(function () {
+            var game = $('.game').val();
+            $.post("http://127.0.0.1:5000/search", {gamename: game},function(data){dom(data);});
+        })
+
+        function dom(retdata) {
+            var gamedata = eval("(" + retdata + ")");
+            var shtml = '';
+            shtml += `
+               <ul class="fn-clear">
+                  <li class="fl">${gamedata.steamdata.GameName}</li>
+                  <li class="fl">${gamedata.steamdata.Price}</li>
+                  <li class="fl">${gamedata.steamdata.Onsale}</li>
+               </ul>
+            `
+            ;
+            var ehtml = '';
+            ehtml += `
+               <ul class="fn-clear">
+                  <li class="fl">${gamedata.epicdata.GameName}</li>
+                  <li class="fl">${gamedata.epicdata.Price}</li>
+                  <li class="fl">${gamedata.epicdata.Onsale}</li>
+               </ul>
+            `
+            ;
+            $('.sform').html(shtml);
+            $('.eform').html(ehtml);
+        }
+    </script>
+</body>
+
+</html>
