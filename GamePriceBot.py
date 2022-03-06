@@ -10,9 +10,10 @@ def steambot(inputname):
     target = soup.select('#search_resultsRows>a:nth-child(1)>div.responsive_search_name_combined>div.col.search_name.ellipsis>span')
 
     if target == []:
-        return {'GameName':'Game Not Found','Price':'','Onsale':''}
+        return {'GameName':'Game Not Found','Price':'','Onsale':'','url':''}
     
     else:
+        link = soup.select('#search_resultsRows > a:nth-child(1)')[0].get('href')
         gamename = target[0].get_text().strip()
         data = soup.select('#search_resultsRows>a:nth-child(1)>div.responsive_search_name_combined>div.col.search_price_discount_combined.responsive_secondrow>div.col.search_price.responsive_secondrow')[0]
         onsale = "No"
@@ -29,7 +30,7 @@ def steambot(inputname):
             else:
                 price = float(result.split(" ")[1])
                 
-        returndata = {'GameName':gamename,'Price':price,'Onsale':onsale}
+        returndata = {'GameName':gamename,'Price':price,'Onsale':onsale, 'url':link}
         return returndata
         
 def epicbot(inputname):
@@ -40,9 +41,11 @@ def epicbot(inputname):
     target = soup.select('#dieselReactWrapper>div>div.css-xxkdgb>main>div:nth-child(2)>div>div>div>div>section>div>section>div>section>section>ul>li>div>div>div>a>div>div>div.css-hkjq8i>span>div')
 
     if target == []:
-        return {'GameName':'Game Not Found','Price':'','Onsale':''}
+        return {'GameName':'Game Not Found','Price':'','Onsale':'','url':''}
         
     else:
+        postlink = soup.select('#dieselReactWrapper>div>div.css-xxkdgb>main>div:nth-child(2)>div>div>div>div>section>div>section>div>section>section>ul>li:nth-child(1)>div>div>div>a')[0].get('href')
+        link = "https://www.epicgames.com" + postlink
         gamename = target[0].get_text().strip()
         data = soup.select('#dieselReactWrapper>div>div.css-xxkdgb>main>div:nth-child(2)>div>div>div>div>section>div>section>div>section>section>ul>li>div>div>div>a>div>div>div.css-hkjq8i>div>div>span>div>span')[0]
         result = data.get_text().strip()
@@ -62,7 +65,7 @@ def epicbot(inputname):
                 origprice = float(result.split("$")[1])
                 price = round((origprice * dismulti), 2)
         
-        returndata = {'GameName':gamename,'Price':price,'Onsale':onsale}
+        returndata = {'GameName':gamename,'Price':price,'Onsale':onsale,'url':link}
         return returndata
     
 if __name__ == "__main__":

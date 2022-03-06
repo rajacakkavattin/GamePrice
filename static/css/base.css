@@ -42,6 +42,7 @@ a:focus {
 }
 
 a:link {
+    color: blue;
     text-decoration: none !important
 }
 
@@ -85,7 +86,7 @@ a:visited {
 }
 
 a:active {
-    color: #fff
+    color: black
 }
 
 span {
@@ -159,7 +160,7 @@ textarea {
 }
 
 a[href]:not([class]) {
-    color: #666;
+    color: blue;
     text-decoration: none
 }
 
